@@ -42,18 +42,25 @@ public class Bootcamp {
 		return devsInscritos;
 	}
 
-	public void setDevsInscritos(Set<Dev> devsInscritos) {
-		this.devsInscritos = devsInscritos;
+	public void inscreverDev(Dev dev) {
+		this.devsInscritos.add(dev);
 	}
 
 	public Set<Conteudo> getConteudos() {
 		return conteudos;
 	}
 
-	public void setConteudos(Set<Conteudo> conteudos) {
-		this.conteudos = conteudos;
+	public void addConteudos(Conteudo conteudo) {
+		this.conteudos.add(conteudo);
 	}
 
+	public double getTotalXPBootcamp() {
+		return this.conteudos
+                .stream()
+                .mapToDouble(Conteudo::calcularXp)
+                .sum();
+	}
+	
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)
